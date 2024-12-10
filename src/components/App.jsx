@@ -1,16 +1,17 @@
+import Header from './Header';
+import Hero from './Hero';
+import CompanyServices from './CompanyServices';
+import ChooseUs from './ChooseUs';
+import Locations from './Locations';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Header />
+      <Hero />
+      <ChooseUs />
+      <CompanyServices />
+      <Locations />
+    </>
   );
 };
