@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-// Main header section styles
-export const HeaderContainer = styled.header`
-  border-bottom: 1px solid #ececec;
+export const FooterSection = styled.section`
+  padding: 20px 0 20px 0;
+  background-color: ${theme.colors.footer};
 `;
 
 export const ElementsContainer = styled.div`
@@ -13,10 +13,9 @@ export const ElementsContainer = styled.div`
   margin: 20px 0 20px 0;
 `;
 
-// Logo styles
 export const Logo = styled.p`
   font-family: Raleway, sans-serif;
-  font-size: 34px;
+  font-size: 28px;
 `;
 
 export const LogoFirstPart = styled.span`
@@ -31,7 +30,6 @@ export const LogoSecondPart = styled.span`
   color: ${theme.colors.secondary};
 `;
 
-// Network styles
 export const NetworkContainer = styled.ul`
   display: flex;
   gap: 30px;

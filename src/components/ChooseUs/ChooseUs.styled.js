@@ -5,7 +5,7 @@ import { theme } from '../../theme';
 export const ChooseUsSection = styled.section`
   /* TODO */
   padding: 20px 0 20px 0;
-  background-color: #9932cc;
+  background-color: ${theme.colors.primary};
 `;
 
 export const HeaderText = styled.h2`

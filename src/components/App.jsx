@@ -3,7 +3,8 @@ import Hero from './Hero';
 import CompanyServices from './CompanyServices';
 import ChooseUs from './ChooseUs';
 import Locations from './Locations';
-import Modal from './Modal';
+import Prices from './Prices';
+import Footer from './Footer';
 
 export const App = () => {
   return (
@@ -12,7 +13,9 @@ export const App = () => {
       <Hero />
       <ChooseUs />
       <CompanyServices />
+      <Prices />
       <Locations />
+      <Footer />
     </>
   );
 };

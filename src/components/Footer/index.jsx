@@ -1,39 +1,18 @@
-import { Facebook, WhatsApp, Instagram } from '@mui/icons-material';
 import SectionsContainer from '../SectionsContainer';
 import { theme } from '../../theme';
 import {
-  HeaderContainer,
-  ElementsContainer,
   Logo,
   LogoFirstPart,
   LogoSecondPart,
+  FooterSection,
   NetworkContainer,
-} from './Header.styled';
+  ElementsContainer,
+} from './Footer.styled';
+import { socialNetworks } from '../Header';
 
-export const socialNetworks = [
-  {
-    id: 1,
-    path: 'https://www.facebook.com/profile.php?id=61570501701073',
-    networkName: 'Facebook',
-    icon: Facebook,
-  },
-  {
-    id: 2,
-    path: 'https://wa.me/3313156464',
-    networkName: 'WhatsApp',
-    icon: WhatsApp,
-  },
-  {
-    id: 3,
-    path: 'https://www.instagram.com/cryslal_clear/profilecard/?igsh=MTV5cTVmMzgweXBkMw==',
-    networkName: 'Instagram',
-    icon: Instagram,
-  },
-];
-
-const Header = () => {
+const Footer = () => {
   return (
-    <HeaderContainer>
+    <FooterSection>
       <SectionsContainer>
         <ElementsContainer>
           <Logo>
@@ -41,6 +20,9 @@ const Header = () => {
             <span> </span>
             <LogoSecondPart>Clear</LogoSecondPart>
           </Logo>
+          <p style={{ color: 'white' }}>
+            Can’t find your town? We will help you! Write to us: 331 315 6464
+          </p>
           <NetworkContainer>
             {socialNetworks.map(network => (
               <li key={network.id}>
@@ -62,8 +44,8 @@ const Header = () => {
           </NetworkContainer>
         </ElementsContainer>
       </SectionsContainer>
-    </HeaderContainer>
+    </FooterSection>
   );
 };
 
-export default Header;
+export default Footer;
