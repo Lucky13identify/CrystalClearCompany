@@ -1,32 +1,212 @@
-// import { Container } from './CompanyServices.styled';
+import { useState } from 'react';
+import SectionsContainer from '../SectionsContainer';
+import Modal from '../Modal';
+import {
+  CompanyServicesSection,
+  HeaderText,
+  CardContainer,
+  Card,
+  CardText,
+  MainTasksContainer,
+  AdditionalTasksContainer,
+  TasksContainer,
+  ListContainer,
+} from './CompanyServices.styled';
+
+const dataServices = [
+  {
+    id: 1,
+    picture: '',
+    alt: 'Kitchen',
+    location: 'Kitchen',
+    cleaningTasks: [
+      'Vacuumed and washed floor',
+      'Dust removed from baseboards',
+      'Chairs and tables cleaned',
+      'Appliance exteriors wiped',
+      'Cleaned cabinet fronts',
+      'Windowsills cleaned and blinds dusted',
+      'Fingerprints removed from all surfaces',
+      'Sinks scrubbed and disinfected',
+      'Microwave exterior and interior cleaned',
+      'Kitchen stove is washed outside and on top',
+      'The refrigerator is cleaned and polished outside',
+      'Washed large window inside',
+      'Trash emptied',
+    ],
+    additionaOptions: [
+      'Washing windows inside (standard height) and washing of entrance glass door',
+      'Baseboards washing',
+      'Washing kitchen stove inside',
+      'Washing refrigerator inside',
+      'Washing dishes',
+    ],
+  },
+  {
+    id: 2,
+    picture: '',
+    alt: 'Bedroom',
+    location: 'Bedroom',
+    cleaningTasks: [
+      'Dust removed from surfaces, baseboards',
+      'Dust removed from lamps and picture frames',
+      'Windowsills and blinds dusted',
+      'Floors vacuumed (and washed)',
+      'Vacuumed under the bed (if accessible)',
+      'Trash emptied',
+    ],
+    additionaOptions: [
+      'Washing windows inside (standard height) and washing of entrance glass door',
+      'Baseboards washing',
+    ],
+  },
+  {
+    id: 3,
+    picture: '',
+    alt: 'Living room',
+    location: 'Living room',
+    cleaningTasks: [
+      'Removed cobwebs and dust from ceilings and walls',
+      'Dust removed from the pictures and furniture (sofas, cabinets, tables)',
+      'Ceiling fans dusted (standard height)',
+      'Lamps and blinds are cleaned',
+      'The floors vacuumed and washed',
+      'The rugs are vacuumed',
+      'Stairs vacuumed and/or washed',
+      'Baseboards dusted',
+      'Trash emptied',
+    ],
+    additionaOptions: [
+      'Washing windows inside (standard height) and washing of entrance glass door',
+      'Baseboards washing',
+      'Vacuum the sofas and remove animal fur',
+    ],
+  },
+  {
+    id: 4,
+    picture: '',
+    alt: 'Laundry',
+    location: 'Laundry',
+    cleaningTasks: [
+      'Dust removed from surfaces, baseboards, lamps',
+      'Vacuumed and washed floor',
+      'Thoroughly wiped and polished washing machine and dryer (outside)',
+      'Trash emptied',
+    ],
+    additionaOptions: [
+      'Washing windows inside (standard height) and washing of entrance glass door',
+      'Baseboards washing',
+    ],
+  },
+  {
+    id: 5,
+    picture: '',
+    alt: 'Bathroom',
+    location: 'Bathroom',
+    cleaningTasks: [
+      'Dust removed from surfaces, lamps and baseboards',
+      'Thoroughly washed and disinfected the toilet, shower and/or tub',
+      'Shower tiles scrubbed and disinfected',
+      'Sinks scrubbed and disinfected',
+      'Countertops washed (all items removed before that)',
+      'Towels hung and folded',
+      'Washed and polished mirrors',
+      'Cabinet front cleaned',
+      'Floor vacuumed and washed',
+      'Trash emptied',
+    ],
+    additionaOptions: [
+      'Washing windows inside (standard height) and washing of entrance glass door',
+      'Baseboards washing',
+    ],
+  },
+];
 
 const CompanyServices = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleCardClick = service => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
   return (
-    <section>
-      <ul>
-        <li>
-          <img src="" alt="" />
-          <h2>text</h2>
-          <div>
-            <button></button>
-          </div>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <h2>text2</h2>
-          <div>
-            <button></button>
-          </div>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <h2>text3</h2>
-          <div>
-            <button></button>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <>
+      <CompanyServicesSection>
+        <SectionsContainer>
+          <HeaderText>Cleaning planing</HeaderText>
+          <CardContainer>
+            {dataServices.map(
+              ({
+                id,
+                location,
+                alt,
+                picture,
+                cleaningTasks,
+                additionaOptions,
+              }) => (
+                <li
+                  className="cardService hvr-grow"
+                  key={id}
+                  onClick={() =>
+                    handleCardClick({
+                      id,
+                      location,
+                      alt,
+                      picture,
+                      cleaningTasks,
+                      additionaOptions,
+                    })
+                  }
+                >
+                  <div
+                    style={{ backgroundColor: 'grey', width: 300, height: 200 }}
+                  >
+                    1
+                  </div>
+
+                  <CardText>{location}</CardText>
+                </li>
+              )
+            )}
+          </CardContainer>
+        </SectionsContainer>
+      </CompanyServicesSection>
+
+      {/* Modal Window */}
+      {selectedService && isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(!isModalOpen)}>
+          <h2 style={{ margin: '20px 0 20px 0' }}>
+            {selectedService.location}
+          </h2>
+          <TasksContainer>
+            <MainTasksContainer>
+              <p style={{ marginBottom: 20 }}>
+                <strong>Cleaning Tasks:</strong>
+              </p>
+              <ListContainer>
+                {selectedService.cleaningTasks.map((task, id) => (
+                  <li key={id}>{task}</li>
+                ))}
+              </ListContainer>
+            </MainTasksContainer>
+            <div>
+              <AdditionalTasksContainer>
+                <p style={{ marginBottom: 20 }}>
+                  <strong>Additional Options:</strong>
+                </p>
+                <ListContainer>
+                  {selectedService.additionaOptions.map((option, id) => (
+                    <li key={id}>{option}</li>
+                  ))}
+                </ListContainer>
+              </AdditionalTasksContainer>
+            </div>
+          </TasksContainer>
+        </Modal>
+      )}
+    </>
   );
 };
 

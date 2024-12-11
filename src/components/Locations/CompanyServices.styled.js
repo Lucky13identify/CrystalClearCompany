@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.header`
-  /* display: flex; */
-  border-bottom: 1px solid #ececec;
+export const ListContainer = styled.ul`
+  font-size: 18px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 30vh;
+`;
 
-  /* background-color: red; */
+export const City = styled.li`
+  display: flex;
+  /* justify-content: left; */
 `;

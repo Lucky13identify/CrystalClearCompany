@@ -1,19 +1,43 @@
-// import { Container } from './SectionsContaier.styled';
+import { LocationOn } from '@mui/icons-material';
+import SectionsContainer from '../SectionsContainer';
+import { ListContainer, City } from './CompanyServices.styled';
+import { theme } from '../../theme';
+
+const listLocations = [
+  'Naperville',
+  'Bolingbrook',
+  'Lisle',
+  'Woodridge',
+  'Plainfield',
+  'Warrenville',
+  'Romeoville',
+  'North Aurora',
+  'Downers Grove',
+  'West Chicago',
+  'Darien',
+  'Lemont',
+  'Shamburg',
+  'Orland Park',
+  'Wheaton',
+  'Westmont',
+  'Aurora',
+  'North Aurora',
+  'Batavia',
+];
 
 const Locations = () => {
   return (
-    <section>
-      <ul>
-        <li>
-          <p>text</p>
-        </li>
-        <li>
-          <p>text</p>
-        </li>
-        <li>
-          <p>text</p>
-        </li>
-      </ul>
+    <section className="locationSection overlayLocations">
+      <SectionsContainer>
+        <ListContainer>
+          {listLocations.map(location => (
+            <City>
+              <LocationOn sx={{ color: theme.colors.primary }} />
+              <p>{location}</p>
+            </City>
+          ))}
+        </ListContainer>
+      </SectionsContainer>
     </section>
   );
 };

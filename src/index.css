@@ -2,8 +2,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
@@ -14,10 +13,21 @@ code {
     monospace;
 }
 
+ul,
 p,
-ul {
-  /* font-family: 'Roboto'; */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
   margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 ol,
@@ -31,7 +41,7 @@ a {
   color: inherit;
 }
 
-.overlay {
+.overlayHero {
   margin: 0 auto;
   background-image: linear-gradient(
       to right,
@@ -42,4 +52,63 @@ a {
   height: 100vh; /* Добавляем высоту для блока, чтобы фон был видим */
   background-size: cover; /* Подгонка фона */
   background-position: center; /* Центрирование фона */
+  background-repeat: no-repeat;
+}
+
+.locationSection {
+  padding: 20px 0;
+}
+
+.overlayLocations {
+  margin: 0 auto;
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.1),
+      rgba(47, 48, 58, 0.1)
+    ),
+    url('../assets/images/76827.jpg'); /* Путь к изображению */
+  height: 30vh; /* Добавляем высоту для блока, чтобы фон был видим */
+  background-size: cover; /* Подгонка фона */
+  background-position: center; /* Центрирование фона */
+}
+
+.serviceCardInfo {
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url('../assets/images/heroBackground.jpg'); /* Путь к изображению */
+  height: 100vh; /* Добавляем высоту для блока, чтобы фон был видим */
+  background-size: cover; /* Подгонка фона */
+  background-position: center; /* Центрирование фона */
+}
+
+.cardService {
+  position: relative;
+  cursor: pointer;
+}
+
+.heroButton {
+  display: inline-block;
+  align-items: center;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background: #9932cc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.heroButton:disabled {
+  cursor: not-allowed;
+  background: #d3d3d3; /* Светло-серый цвет для неактивной кнопки */
+  color: #a9a9a9; /* Серый цвет текста */
+  box-shadow: none; /* Убирает тень */
 }

@@ -5,5 +5,5 @@ export const Container = styled.div`
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-  /* width: 800px; */
+  width: 1300px;
 `;

@@ -1,6 +1,14 @@
 import { Facebook, WhatsApp, Instagram } from '@mui/icons-material';
 import SectionsContainer from '../SectionsContainer';
-import { HeaderContainer, ElementsContainer } from './Header.styled';
+import { theme } from '../../theme';
+import {
+  HeaderContainer,
+  ElementsContainer,
+  Logo,
+  LogoFirstPart,
+  LogoSecondPart,
+  NetworkContainer,
+} from './Header.styled';
 
 const socialNetworks = [
   {
@@ -28,33 +36,30 @@ const Header = () => {
     <HeaderContainer>
       <SectionsContainer>
         <ElementsContainer>
-          <p style={{ fontFamily: 'Raleway, sans-serif', fontSize: 34 }}>
-            <span style={{ color: '#9932CC' }}>Crystal</span>
+          <Logo>
+            <LogoFirstPart>Crystal</LogoFirstPart>
             <span> </span>
-            <span
-              style={{
-                backgroundColor: '#9932CC',
-                color: 'white',
-                padding: 6,
-                borderRadius: 12,
-              }}
-            >
-              Clear
-            </span>
-          </p>
-          <ul style={{ display: 'flex', gap: 30, alignItems: 'center' }}>
+            <LogoSecondPart>Clear</LogoSecondPart>
+          </Logo>
+          <NetworkContainer>
             {socialNetworks.map(network => (
               <li key={network.id}>
                 <a
+                  className="hvr-grow"
                   href={network.path}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <network.icon style={{ fontSize: 30, color: '#9932CC' }} />
+                  <network.icon
+                    sx={{
+                      fontSize: 32,
+                      color: theme.colors.primary,
+                    }}
+                  />
                 </a>
               </li>
             ))}
-          </ul>
+          </NetworkContainer>
         </ElementsContainer>
       </SectionsContainer>
     </HeaderContainer>
