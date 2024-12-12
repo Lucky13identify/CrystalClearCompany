@@ -1,4 +1,4 @@
-name: Build and deploy to GitHub Pages
+name: Build and deploy to Main
 
 on:
   push:
@@ -16,9 +16,3 @@ jobs:
           npm install
           npm run lint:js
           npm run build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
-        with:
-          branch: main
-          folder: build
