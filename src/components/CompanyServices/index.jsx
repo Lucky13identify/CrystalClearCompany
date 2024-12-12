@@ -5,7 +5,6 @@ import {
   CompanyServicesSection,
   HeaderText,
   CardContainer,
-  Card,
   CardText,
   MainTasksContainer,
   AdditionalTasksContainer,

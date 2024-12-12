@@ -6,12 +6,6 @@ import { Overlay, Modal, CloseButton } from './Modal.styled';
 const modalRoot = document.querySelector('#modal-root');
 
 const ModalLayout = ({ onClose, children, size }) => {
-  const handleKeyDown = e => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
-
   const handleOverlayClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -19,11 +13,17 @@ const ModalLayout = ({ onClose, children, size }) => {
   };
 
   useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>
