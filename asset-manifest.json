@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "./static/css/main.1c207bf8.css",
-    "main.js": "./static/js/main.6f5f5c08.js",
-    "static/media/76827.jpg": "./static/media/76827.3871e3f158632690ac81.jpg",
+    "main.css": "./static/css/main.cfab169c.css",
+    "main.js": "./static/js/main.f3d7ccb1.js",
+    "static/media/livingRoom.jpg": "./static/media/livingRoom.0288495a183e68efb94f.jpg",
+    "static/media/map.jpg": "./static/media/map.3871e3f158632690ac81.jpg",
+    "static/media/Professional-House-Cleaning-Services-in-North-Ogden-Utah.jpg": "./static/media/Professional-House-Cleaning-Services-in-North-Ogden-Utah.d5519282f41834d912ce.jpg",
+    "static/media/bathroom.jpg": "./static/media/bathroom.056dff87863af36c97a6.jpg",
     "static/media/heroBackground.jpg": "./static/media/heroBackground.0f1a42d5288427848e77.jpg",
+    "static/media/kitchen.jpg": "./static/media/kitchen.a1c101a2f4c988e37347.jpg",
+    "static/media/laundry.jpg": "./static/media/laundry.06956c7f03710128b21b.jpg",
+    "static/media/bedroom.webp": "./static/media/bedroom.be2fefba423ba2b3f9b6.webp",
     "index.html": "./index.html",
-    "main.1c207bf8.css.map": "./static/css/main.1c207bf8.css.map",
-    "main.6f5f5c08.js.map": "./static/js/main.6f5f5c08.js.map"
+    "main.cfab169c.css.map": "./static/css/main.cfab169c.css.map",
+    "main.f3d7ccb1.js.map": "./static/js/main.f3d7ccb1.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c207bf8.css",
-    "static/js/main.6f5f5c08.js"
+    "static/css/main.cfab169c.css",
+    "static/js/main.f3d7ccb1.js"
   ]
 }
