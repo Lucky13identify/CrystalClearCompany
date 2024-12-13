@@ -2,7 +2,6 @@ import SectionsContainer from '../SectionsContainer';
 import {
   InfoContainer,
   HeaderText,
-  AdditionalOptionsSection,
   ListContainer,
   FlexContainer,
 } from './AdditionalOptions.styled';
