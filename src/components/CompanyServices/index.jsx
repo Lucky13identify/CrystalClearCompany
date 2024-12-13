@@ -10,12 +10,15 @@ import {
   AdditionalTasksContainer,
   TasksContainer,
   ListContainer,
+  OverlayCard,
+  Text,
+  HeaderTextModal,
 } from './CompanyServices.styled';
 
 const dataServices = [
   {
     id: 1,
-    picture: '',
+    classOverlay: 'overlayServiceCardKitchen',
     alt: 'Kitchen',
     location: 'Kitchen',
     cleaningTasks: [
@@ -43,7 +46,7 @@ const dataServices = [
   },
   {
     id: 2,
-    picture: '',
+    classOverlay: 'overlayServiceCardBedroom',
     alt: 'Bedroom',
     location: 'Bedroom',
     cleaningTasks: [
@@ -61,7 +64,7 @@ const dataServices = [
   },
   {
     id: 3,
-    picture: '',
+    classOverlay: 'overlayServiceCardLivingRoom',
     alt: 'Living room',
     location: 'Living room',
     cleaningTasks: [
@@ -83,7 +86,7 @@ const dataServices = [
   },
   {
     id: 4,
-    picture: '',
+    classOverlay: 'overlayServiceCardLaundry',
     alt: 'Laundry',
     location: 'Laundry',
     cleaningTasks: [
@@ -99,7 +102,7 @@ const dataServices = [
   },
   {
     id: 5,
-    picture: '',
+    classOverlay: 'overlayServiceCardBathroom',
     alt: 'Bathroom',
     location: 'Bathroom',
     cleaningTasks: [
@@ -130,6 +133,8 @@ const CompanyServices = () => {
     setIsModalOpen(true);
   };
 
+  console.log(selectedService);
+
   return (
     <>
       <CompanyServicesSection>
@@ -144,6 +149,7 @@ const CompanyServices = () => {
                 picture,
                 cleaningTasks,
                 additionaOptions,
+                classOverlay,
               }) => (
                 <li
                   className="cardService hvr-grow"
@@ -156,14 +162,11 @@ const CompanyServices = () => {
                       picture,
                       cleaningTasks,
                       additionaOptions,
+                      classOverlay,
                     })
                   }
                 >
-                  <div
-                    style={{ backgroundColor: 'grey', width: 300, height: 200 }}
-                  >
-                    1
-                  </div>
+                  <OverlayCard className={classOverlay}></OverlayCard>
 
                   <CardText>{location}</CardText>
                 </li>
@@ -175,10 +178,11 @@ const CompanyServices = () => {
 
       {/* Modal Window */}
       {selectedService && isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(!isModalOpen)}>
-          <h2 style={{ margin: '20px 0 20px 0' }}>
-            {selectedService.location}
-          </h2>
+        <Modal
+          overlayClass={selectedService.classOverlay}
+          onClose={() => setIsModalOpen(!isModalOpen)}
+        >
+          <HeaderTextModal>{selectedService.location}</HeaderTextModal>
           <TasksContainer>
             <MainTasksContainer>
               <p style={{ marginBottom: 20 }}>
@@ -192,9 +196,9 @@ const CompanyServices = () => {
             </MainTasksContainer>
             <div>
               <AdditionalTasksContainer>
-                <p style={{ marginBottom: 20 }}>
+                <Text>
                   <strong>Additional Options:</strong>
-                </p>
+                </Text>
                 <ListContainer>
                   {selectedService.additionaOptions.map((option, id) => (
                     <li key={id}>{option}</li>

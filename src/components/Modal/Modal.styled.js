@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Cancel } from '@mui/icons-material';
+import { theme } from '../../theme';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -29,4 +31,12 @@ export const CloseButton = styled.button`
   background: transparent;
   font-size: 16px;
   cursor: pointer;
+`;
+
+export const CloseIcon = styled(Cancel)`
+  color: ${theme.colors.secondary};
+  font-size: 60px;
+  &:hover {
+    color: ${theme.colors.primary};
+  }
 `;

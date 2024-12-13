@@ -3,7 +3,8 @@ import Hero from './Hero';
 import CompanyServices from './CompanyServices';
 import ChooseUs from './ChooseUs';
 import Locations from './Locations';
-import Prices from './Prices';
+import AdditionalOptions from './AdditionalOptions';
+import Reviews from './Reviews';
 import Footer from './Footer';
 
 export const App = () => {
@@ -13,7 +14,8 @@ export const App = () => {
       <Hero />
       <ChooseUs />
       <CompanyServices />
-      <Prices />
+      <AdditionalOptions />
+      <Reviews />
       <Locations />
       <Footer />
     </>

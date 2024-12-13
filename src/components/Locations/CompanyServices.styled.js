@@ -11,5 +11,5 @@ export const ListContainer = styled.ul`
 
 export const City = styled.li`
   display: flex;
-  /* justify-content: left; */
+  align-items: center;
 `;

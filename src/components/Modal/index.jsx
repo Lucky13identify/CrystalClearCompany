@@ -1,11 +1,11 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-import { Close } from '@mui/icons-material';
-import { Overlay, Modal, CloseButton } from './Modal.styled';
+
+import { Overlay, Modal, CloseButton, CloseIcon } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalLayout = ({ onClose, children, size }) => {
+const ModalLayout = ({ onClose, children, size, overlayClass }) => {
   const handleOverlayClick = e => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -27,9 +27,9 @@ const ModalLayout = ({ onClose, children, size }) => {
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>
-      <Modal size={size}>
+      <Modal size={size} className={overlayClass}>
         <CloseButton onClick={onClose}>
-          <Close />
+          <CloseIcon />
         </CloseButton>
         {children}
       </Modal>
