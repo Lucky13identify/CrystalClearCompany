@@ -6,9 +6,32 @@ export const HeaderContainer = styled.header`
   border-bottom: 1px solid #ececec;
 `;
 
+export const ContainerInfo = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
+export const MailPhoneContainer = styled.ul`
+  display: flex;
+  gap: 30px;
+`;
+
+export const TextIconContainer = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+`;
+
+export const Link = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
 export const ElementsContainer = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   margin: 20px 0 20px 0;
 `;

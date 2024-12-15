@@ -14,7 +14,7 @@ const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const initialValues = {
-    email: 'demon01133@gmail.com',
+    email: 'test@gmail.com',
     message: '',
   };
 

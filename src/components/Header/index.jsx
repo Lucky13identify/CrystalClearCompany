@@ -1,4 +1,10 @@
-import { Facebook, WhatsApp, Instagram } from '@mui/icons-material';
+import {
+  Facebook,
+  WhatsApp,
+  Instagram,
+  LocalPhone,
+  MailOutline,
+} from '@mui/icons-material';
 import SectionsContainer from '../SectionsContainer';
 import { theme } from '../../theme';
 import {
@@ -8,6 +14,10 @@ import {
   LogoFirstPart,
   LogoSecondPart,
   NetworkContainer,
+  ContainerInfo,
+  MailPhoneContainer,
+  TextIconContainer,
+  Link,
 } from './Header.styled';
 
 export const socialNetworks = [
@@ -41,25 +51,51 @@ const Header = () => {
             <span> </span>
             <LogoSecondPart>Clear</LogoSecondPart>
           </Logo>
-          <NetworkContainer>
-            {socialNetworks.map(network => (
-              <li key={network.id}>
-                <a
-                  className="hvr-grow"
-                  href={network.path}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <network.icon
+          <ContainerInfo>
+            <MailPhoneContainer>
+              <TextIconContainer>
+                <Link className="hvr-grow" href="mailto:test@gmail.com">
+                  <LocalPhone
                     sx={{
-                      fontSize: 32,
+                      fontSize: 25,
                       color: theme.colors.primary,
                     }}
                   />
-                </a>
-              </li>
-            ))}
-          </NetworkContainer>
+                  test@gmail.com
+                </Link>
+              </TextIconContainer>
+              <TextIconContainer>
+                <Link className="hvr-grow" href="tel:3313156464">
+                  <MailOutline
+                    sx={{
+                      fontSize: 25,
+                      color: theme.colors.primary,
+                    }}
+                  />
+                  331 315 6464
+                </Link>
+              </TextIconContainer>
+            </MailPhoneContainer>
+            <NetworkContainer>
+              {socialNetworks.map(network => (
+                <li key={network.id}>
+                  <a
+                    className="hvr-grow"
+                    href={network.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <network.icon
+                      sx={{
+                        fontSize: 32,
+                        color: theme.colors.primary,
+                      }}
+                    />
+                  </a>
+                </li>
+              ))}
+            </NetworkContainer>
+          </ContainerInfo>
         </ElementsContainer>
       </SectionsContainer>
     </HeaderContainer>
