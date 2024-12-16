@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Formik, Field } from 'formik';
 import SectionsContainer from '../SectionsContainer';
 import Modal from '../Modal';
+import PricingModal from '../PricingModal';
 import { theme } from '../../theme';
 import {
   InfoContainer,
@@ -12,11 +13,6 @@ import {
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const initialValues = {
-    email: 'test@gmail.com',
-    message: '',
-  };
 
   const handleSubmit = ({ resetForm }) => {
     resetForm();
@@ -32,12 +28,19 @@ const Hero = () => {
         <SectionsContainer>
           <InfoContainer>
             <MainText>Time to clean!</MainText>
-            <button
+            {/* <button
               onClick={() => setIsModalOpen(true)}
               type="button"
               class="heroButton hvr-grow"
             >
               Contact Us
+            </button> */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              type="button"
+              class="heroButton hvr-grow"
+            >
+              Price
             </button>
           </InfoContainer>
         </SectionsContainer>
@@ -45,6 +48,12 @@ const Hero = () => {
 
       {/* Modal window */}
       {isModalOpen && (
+        <Modal size="big" onClose={() => setIsModalOpen(!isModalOpen)}>
+          <ModalHeader>Contact Us</ModalHeader>
+          <PricingModal onSubmit={handleSubmit} />
+        </Modal>
+      )}
+      {/* {isModalOpen && (
         <Modal size="small" onClose={() => setIsModalOpen(!isModalOpen)}>
           <ModalHeader>Contact Us</ModalHeader>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -85,7 +94,7 @@ const Hero = () => {
             )}
           </Formik>
         </Modal>
-      )}
+      )} */}
     </>
   );
 };

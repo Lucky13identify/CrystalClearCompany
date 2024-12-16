@@ -19,8 +19,18 @@ export const Modal = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 15px;
-  width: ${({ size }) => (size === 'small' ? '400px' : '800px')};
+  width: ${({ size }) =>
+    size === 'small'
+      ? '400px'
+      : size === 'middle'
+      ? '800px'
+      : size === 'big'
+      ? '1000px'
+      : 'auto'};
   position: relative;
+  max-height: 85vh;
+  overflow: hidden;
+  overflow-y: auto;
 `;
 
 export const CloseButton = styled.button`
