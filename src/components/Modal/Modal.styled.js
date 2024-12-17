@@ -28,6 +28,7 @@ export const Modal = styled.div`
       ? '1000px'
       : 'auto'};
   position: relative;
+  min-height: 60vh;
   max-height: 85vh;
   overflow: hidden;
   overflow-y: auto;

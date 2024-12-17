@@ -3,11 +3,10 @@ import { Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const SecondStep = () => {
+const SecondStep = ({ values }) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <>
-      sdsd
       <Field name="eventDate">
         {() => (
           <DatePicker
@@ -19,6 +18,7 @@ const SecondStep = () => {
           />
         )}
       </Field>
+      <div>{values.firstName}</div>
     </>
   );
 };

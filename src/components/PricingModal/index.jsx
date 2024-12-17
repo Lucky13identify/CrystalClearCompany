@@ -18,7 +18,7 @@ const initialValues = {
 };
 
 const PricingModal = ({ handleSubmit }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   const nextStep = () => {
     setStep(prevStep => prevStep + 1);
@@ -28,13 +28,13 @@ const PricingModal = ({ handleSubmit }) => {
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       {({ isSubmitting, values }) => (
         <FormSuspense>
-          {/* {step === 1 && (
+          {step === 1 && (
             <FirstStep
               isSubmitting={isSubmitting}
               values={values}
               nextStep={nextStep}
             />
-          )} */}
+          )}
           {step === 2 && (
             <SecondStep isSubmitting={isSubmitting} values={values} />
           )}
