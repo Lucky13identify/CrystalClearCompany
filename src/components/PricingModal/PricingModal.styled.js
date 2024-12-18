@@ -1,6 +1,15 @@
 import styled from 'styled-components';
-import { Form } from 'formik';
+import { theme } from '../../theme';
 
-export const FormSuspense = styled(Form)`
-  /* width: 375px; */
+export const HeaderText = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  color: ${theme.colors.primary};
+  margin-bottom: 8px;
+`;
+
+export const Price = styled.p`
+  font-size: 35px;
+  font-weight: 700;
+  color: ${theme.colors.primary};
 `;

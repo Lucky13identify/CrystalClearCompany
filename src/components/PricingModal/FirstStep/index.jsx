@@ -1,4 +1,4 @@
-import { Field } from 'formik';
+import { Field, useFormikContext } from 'formik';
 import { useState } from 'react';
 import { theme } from '../../../theme';
 import {
@@ -113,9 +113,16 @@ const HOME_FIELDS = [
 const FirstStep = ({ values, isSubmitting, nextStep }) => {
   const [activeButton, setActiveButton] = useState(null);
   const [optionType, setOptionType] = useState('One-Time');
+  const { setFieldValue } = useFormikContext();
 
   const handleOptionChange = value => {
     setOptionType(value);
+  };
+
+  const handleButtonClick = (name, text) => {
+    setActiveButton({ name, text });
+    // Update the cleaningPackage field with the selected button's name
+    setFieldValue('cleaningPackage', name);
   };
 
   return (
@@ -222,7 +229,7 @@ const FirstStep = ({ values, isSubmitting, nextStep }) => {
               active={activeButton?.name === name}
               className="heroButton hvr-grow"
               onClick={() => {
-                values.cleaningPackage = name;
+                handleButtonClick(name, text);
                 setActiveButton({ name, text });
               }}
             >
@@ -233,23 +240,6 @@ const FirstStep = ({ values, isSubmitting, nextStep }) => {
       </ButtonsContainer>
 
       {activeButton && <TextInfo>{activeButton?.text}</TextInfo>}
-
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <p>Estimated Price</p>
-          <p>price</p>
-        </div>
-        <button
-          onClick={() => {
-            console.log(values);
-            nextStep();
-          }}
-          type="button"
-          className="heroButton hvr-grow"
-        >
-          Schedule cleaning
-        </button>
-      </div>
     </>
   );
 };
