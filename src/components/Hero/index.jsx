@@ -14,8 +14,9 @@ import {
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubmit = ({ resetForm }) => {
-    resetForm();
+  const handleSubmit = (values, price) => {
+    console.log(values);
+    console.log(price);
     setIsModalOpen(!isModalOpen);
   };
 
@@ -50,7 +51,7 @@ const Hero = () => {
       {isModalOpen && (
         <Modal size="big" onClose={() => setIsModalOpen(!isModalOpen)}>
           <ModalHeader>Contact Us</ModalHeader>
-          <PricingModal onSubmit={handleSubmit} />
+          <PricingModal handleSubmit={handleSubmit} />
         </Modal>
       )}
       {/* {isModalOpen && (

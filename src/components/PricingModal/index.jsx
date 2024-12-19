@@ -69,7 +69,7 @@ const PricingModal = ({ handleSubmit }) => {
     >
       {({ isSubmitting, values }) => {
         // Пересчитываем цену при изменении значений
-
+        console.log(values);
         setPrice(calculatePrice(values));
 
         return (
@@ -93,14 +93,23 @@ const PricingModal = ({ handleSubmit }) => {
                 {/* Отображаем итоговую цену */}
               </div>
               <button
-                disabled={Object.values(values).some(value => value === '')} // Активируем кнопку, если все поля заполнены
+                disabled={
+                  step === 1 &&
+                  Object.values(values).some(value => value === '')
+                } // Активируем кнопку, если все поля заполнены
                 onClick={() => {
-                  nextStep();
+                  if (step === 1) {
+                    nextStep(); // Переход к следующему шагу, если на первом
+                  } else {
+                    // Подтверждаем уборку на втором шаге
+                    handleSubmit(values, price); // Отправляем данные при подтверждении
+                  }
                 }}
                 type="button"
                 className="heroButton hvr-grow"
               >
-                Schedule cleaning
+                {step === 1 ? 'Schedule cleaning' : 'Confirm cleaning'}{' '}
+                {/* Текст меняется в зависимости от шага */}
               </button>
             </div>
           </Form>

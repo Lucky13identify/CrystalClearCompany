@@ -203,7 +203,6 @@ const FirstStep = ({ values, isSubmitting, nextStep }) => {
             style={{ display: 'flex', alignItems: 'center', gap: 5 }}
           >
             <Field
-              checked={optionType === value}
               type="radio"
               id={id}
               name="optionCleaning"
