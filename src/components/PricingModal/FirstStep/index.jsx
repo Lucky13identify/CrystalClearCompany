@@ -1,5 +1,6 @@
-import { Field, useFormikContext } from 'formik';
 import { useState } from 'react';
+import { Field, useFormikContext } from 'formik';
+
 import { theme } from '../../../theme';
 import {
   NameContainer,
@@ -121,7 +122,6 @@ const FirstStep = ({ values, isSubmitting, nextStep }) => {
 
   const handleButtonClick = (name, text) => {
     setActiveButton({ name, text });
-    // Update the cleaningPackage field with the selected button's name
     setFieldValue('cleaningPackage', name);
   };
 

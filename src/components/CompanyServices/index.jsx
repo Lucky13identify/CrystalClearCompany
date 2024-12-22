@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SectionsContainer from '../SectionsContainer';
 import Modal from '../Modal';
+
 import {
   CompanyServicesSection,
   HeaderText,

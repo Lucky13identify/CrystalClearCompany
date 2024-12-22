@@ -1,7 +1,8 @@
 import { LocationOn } from '@mui/icons-material';
 import SectionsContainer from '../SectionsContainer';
-import { ListContainer, City } from './CompanyServices.styled';
+
 import { theme } from '../../theme';
+import { ListContainer, City } from './CompanyServices.styled';
 
 const listLocations = [
   'Naperville',

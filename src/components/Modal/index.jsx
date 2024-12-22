@@ -1,5 +1,5 @@
-import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 import { Overlay, Modal, CloseButton, CloseIcon } from './Modal.styled';
 

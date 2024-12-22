@@ -17,9 +17,7 @@ export const MainText = styled.h1`
 `;
 
 // Modal styles
-export const FormSuspense = styled(Form)`
-  /* width: 375px; */
-`;
+export const FormSuspense = styled(Form)``;
 
 export const ModalHeader = styled.h2`
   margin: 20px 0;

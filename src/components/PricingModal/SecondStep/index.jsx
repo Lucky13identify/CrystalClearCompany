@@ -1,21 +1,22 @@
 import { useState } from 'react';
-import { Field, useFormikContext } from 'formik'; // Импортируем useFormikContext для обновления значений формы
+import { Field, useFormikContext } from 'formik';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { StaticDateTimePicker } from '@mui/x-date-pickers/StaticDateTimePicker';
 import { TextField } from '@mui/material';
 import dayjs from 'dayjs';
-import { theme } from '../../../theme';
 
+import { theme } from '../../../theme';
 import { HeaderText, ContainerList } from './SecondStep.styled';
 
 const SecondStep = ({ values }) => {
-  const { setFieldValue } = useFormikContext(); // Получаем метод setFieldValue из Formik
+  const { setFieldValue } = useFormikContext();
   const [selectedDateTime, setSelectedDateTime] = useState(dayjs());
 
   const handleDateChange = newValue => {
-    setSelectedDateTime(newValue); // Обновляем локальное состояние
-    setFieldValue('eventDateTime', newValue); // Обновляем значение в форме
+    const formattedDate = dayjs(newValue).format('YYYY-MM-DD HH:mm');
+    setSelectedDateTime(newValue);
+    setFieldValue('eventDateTime', formattedDate);
   };
 
   return (
@@ -31,6 +32,9 @@ const SecondStep = ({ values }) => {
                 onChange={handleDateChange}
                 renderInput={params => <TextField {...params} />}
                 ampm={false}
+                slots={{
+                  actionBar: () => null,
+                }}
                 sx={{
                   '& .MuiPickersDay-root.Mui-selected': {
                     backgroundColor: theme.colors.primary,

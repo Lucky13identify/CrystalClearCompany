@@ -1,4 +1,6 @@
 import SectionsContainer from '../SectionsContainer';
+import { socialNetworks } from '../Header';
+
 import { theme } from '../../theme';
 import {
   Logo,
@@ -8,7 +10,6 @@ import {
   NetworkContainer,
   ElementsContainer,
 } from './Footer.styled';
-import { socialNetworks } from '../Header';
 
 const Footer = () => {
   return (

@@ -1,23 +1,42 @@
 import { useState } from 'react';
-import { Formik, Field } from 'formik';
 import SectionsContainer from '../SectionsContainer';
 import Modal from '../Modal';
 import PricingModal from '../PricingModal';
-import { theme } from '../../theme';
-import {
-  InfoContainer,
-  MainText,
-  FormSuspense,
-  ModalHeader,
-} from './Hero.styled';
+
+import { InfoContainer, MainText } from './Hero.styled';
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubmit = (values, price) => {
-    console.log(values);
-    console.log(price);
-    setIsModalOpen(!isModalOpen);
+  const handleSubmit = async (values, price, setStep) => {
+    try {
+      const enrichedValues = {
+        ...values,
+        price: `$${price}`,
+        access_key: '5853be5f-0678-42ab-b543-aa07f435d14c',
+      };
+
+      const json = JSON.stringify(enrichedValues);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: json,
+      });
+
+      const res = await response.json();
+
+      if (res.success) {
+        setStep(prevStep => prevStep + 1);
+      } else {
+        setStep(prevStep => prevStep + 2);
+      }
+    } catch (error) {
+      setStep(prevStep => prevStep + 2);
+    }
   };
 
   return (
@@ -29,19 +48,13 @@ const Hero = () => {
         <SectionsContainer>
           <InfoContainer>
             <MainText>Time to clean!</MainText>
-            {/* <button
-              onClick={() => setIsModalOpen(true)}
-              type="button"
-              class="heroButton hvr-grow"
-            >
-              Contact Us
-            </button> */}
+
             <button
               onClick={() => setIsModalOpen(true)}
               type="button"
               class="heroButton hvr-grow"
             >
-              Price
+              Book now!
             </button>
           </InfoContainer>
         </SectionsContainer>
@@ -50,62 +63,14 @@ const Hero = () => {
       {/* Modal window */}
       {isModalOpen && (
         <Modal size="big" onClose={() => setIsModalOpen(!isModalOpen)}>
-          <ModalHeader>Contact Us</ModalHeader>
-          <PricingModal handleSubmit={handleSubmit} />
+          <PricingModal
+            handleSubmit={handleSubmit}
+            closeModal={() => setIsModalOpen(!isModalOpen)}
+          />
         </Modal>
       )}
-      {/* {isModalOpen && (
-        <Modal size="small" onClose={() => setIsModalOpen(!isModalOpen)}>
-          <ModalHeader>Contact Us</ModalHeader>
-          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-            {({ isSubmitting, values }) => (
-              <FormSuspense>
-                <div style={{ marginBottom: '20px' }}>
-                  <label htmlFor="email">Email</label>
-                  <Field
-                    style={FieldStyles}
-                    type="email"
-                    id="email"
-                    name="email"
-                    readOnly={true}
-                    placeholder="Enter your email"
-                  />
-                </div>
-
-                <div style={{ marginBottom: '20px' }}>
-                  <label htmlFor="message">Message</label>
-                  <Field
-                    style={FieldStyles}
-                    as="textarea"
-                    id="message"
-                    name="message"
-                    placeholder="Enter your message"
-                    rows="4"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  class="heroButton hvr-grow"
-                  disabled={isSubmitting || !values.message.trim()}
-                >
-                  Submit
-                </button>
-              </FormSuspense>
-            )}
-          </Formik>
-        </Modal>
-      )} */}
     </>
   );
 };
 
 export default Hero;
-
-const FieldStyles = {
-  width: '100%',
-  padding: '10px',
-  marginTop: '5px',
-  borderRadius: '5px',
-  border: `1px solid ${theme.colors.primary}`,
-};

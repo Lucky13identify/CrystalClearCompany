@@ -1,14 +1,10 @@
-import SectionsContainer from '../SectionsContainer';
-import { PricesSection, Name, HeaderText, Comment } from './Reviews.styled';
-
-// import Swiper core and required modules
 import { Navigation } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import SectionsContainer from '../SectionsContainer';
+
+import { PricesSection, Name, HeaderText, Comment } from './Reviews.styled';
 
 const listComment = [
   {

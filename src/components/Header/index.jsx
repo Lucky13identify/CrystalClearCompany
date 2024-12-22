@@ -6,6 +6,7 @@ import {
   MailOutline,
 } from '@mui/icons-material';
 import SectionsContainer from '../SectionsContainer';
+
 import { theme } from '../../theme';
 import {
   HeaderContainer,
@@ -54,14 +55,17 @@ const Header = () => {
           <ContainerInfo>
             <MailPhoneContainer>
               <TextIconContainer>
-                <Link className="hvr-grow" href="mailto:test@gmail.com">
+                <Link
+                  className="hvr-grow"
+                  href="mailto:crystalclear444you@gmail.com"
+                >
                   <LocalPhone
                     sx={{
                       fontSize: 25,
                       color: theme.colors.primary,
                     }}
                   />
-                  test@gmail.com
+                  crystalclear444you@gmail.com
                 </Link>
               </TextIconContainer>
               <TextIconContainer>

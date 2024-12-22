@@ -13,3 +13,9 @@ export const Price = styled.p`
   font-weight: 700;
   color: ${theme.colors.primary};
 `;
+
+export const ContainerPrice = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;

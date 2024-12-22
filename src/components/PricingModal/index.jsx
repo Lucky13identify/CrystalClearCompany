@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
-import { HeaderText, Price } from './PricingModal.styled';
+import ThirdStep from './ThirdStep';
+import ErrorStep from './ErrorStep';
+
+import { HeaderText, Price, ContainerPrice } from './PricingModal.styled';
 
 const initialValues = {
   firstName: '',
@@ -18,13 +21,12 @@ const initialValues = {
   cleaningPackage: '',
 };
 
-// Цены за единицу
 const unitPrices = {
-  bedrooms: 50, // Цена за одну спальню
-  bathrooms: 40, // Цена за одну ванную
-  people: 10, // Цена за одного человека
-  pets: 20, // Цена за одно животное
-  squareFootage: 15, // Цена за квадратный метр
+  bedrooms: 50,
+  bathrooms: 40,
+  people: 10,
+  pets: 20,
+  squareFootage: 15,
   cleaningPackage: {
     'Design with Time': 246,
     'Deep Clean': 400,
@@ -37,23 +39,23 @@ const unitPrices = {
   },
 };
 
-const PricingModal = ({ handleSubmit }) => {
-  const [step, setStep] = useState(1);
-  const [price, setPrice] = useState(0); // Для хранения общей суммы
+const PricingModal = ({ handleSubmit, closeModal }) => {
+  const [step, setStep] = useState(3);
+  const [price, setPrice] = useState(0);
+
+  console.log(step);
 
   const nextStep = () => {
     setStep(prevStep => prevStep + 1);
   };
 
-  // Функция для подсчёта итоговой цены
   const calculatePrice = values => {
     return Object.entries(values).reduce((total, [key, value]) => {
       if (unitPrices[key]) {
-        // Если это объект (например, optionCleaning), используем соответствующее значение
         if (typeof unitPrices[key] === 'object') {
           return total + (unitPrices[key][value] || 0);
         }
-        // Для числовых значений умножаем на цену за единицу
+
         return total + (parseFloat(value) || 0) * unitPrices[key];
       }
       return total;
@@ -64,12 +66,10 @@ const PricingModal = ({ handleSubmit }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={values => {
-        handleSubmit(values, price); // Передаём итоговую цену в обработчик
+        handleSubmit(values, price, setStep);
       }}
     >
       {({ isSubmitting, values }) => {
-        // Пересчитываем цену при изменении значений
-        console.log(values);
         setPrice(calculatePrice(values));
 
         return (
@@ -80,38 +80,33 @@ const PricingModal = ({ handleSubmit }) => {
             {step === 2 && (
               <SecondStep isSubmitting={isSubmitting} values={values} />
             )}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                marginTop: 20,
-              }}
-            >
-              <div>
-                <HeaderText>Estimated Price</HeaderText>
-                <Price>$ {price.toFixed(2)}</Price>{' '}
-                {/* Отображаем итоговую цену */}
-              </div>
-              <button
-                disabled={
-                  step === 1 &&
-                  Object.values(values).some(value => value === '')
-                } // Активируем кнопку, если все поля заполнены
-                onClick={() => {
-                  if (step === 1) {
-                    nextStep(); // Переход к следующему шагу, если на первом
-                  } else {
-                    // Подтверждаем уборку на втором шаге
-                    handleSubmit(values, price); // Отправляем данные при подтверждении
+            {step === 3 && <ThirdStep closeModal={closeModal} />}
+            {step === 4 && <ErrorStep closeModal={closeModal} />}
+            {(step === 1 || step === 2) && (
+              <ContainerPrice>
+                <div>
+                  <HeaderText>Estimated Price</HeaderText>
+                  <Price>$ {price.toFixed(2)}</Price>
+                </div>
+                <button
+                  disabled={
+                    step === 1 &&
+                    Object.values(values).some(value => value === '')
                   }
-                }}
-                type="button"
-                className="heroButton hvr-grow"
-              >
-                {step === 1 ? 'Schedule cleaning' : 'Confirm cleaning'}{' '}
-                {/* Текст меняется в зависимости от шага */}
-              </button>
-            </div>
+                  onClick={() => {
+                    if (step === 1) {
+                      nextStep();
+                    } else {
+                      handleSubmit(values, price, setStep);
+                    }
+                  }}
+                  type="button"
+                  className="heroButton hvr-grow"
+                >
+                  {step === 1 ? 'Schedule cleaning' : 'Confirm cleaning'}{' '}
+                </button>
+              </ContainerPrice>
+            )}
           </Form>
         );
       }}
