@@ -40,10 +40,8 @@ const unitPrices = {
 };
 
 const PricingModal = ({ handleSubmit, closeModal }) => {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [price, setPrice] = useState(0);
-
-  console.log(step);
 
   const nextStep = () => {
     setStep(prevStep => prevStep + 1);

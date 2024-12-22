@@ -13,7 +13,7 @@ const Hero = () => {
       const enrichedValues = {
         ...values,
         price: `$${price}`,
-        access_key: '5853be5f-0678-42ab-b543-aa07f435d14c',
+        access_key: process.env.REACT_APP_CRYSTAL_CLEAR_EMAIL_KEY,
       };
 
       const json = JSON.stringify(enrichedValues);

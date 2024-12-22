@@ -134,8 +134,6 @@ const CompanyServices = () => {
     setIsModalOpen(true);
   };
 
-  console.log(selectedService);
-
   return (
     <>
       <CompanyServicesSection>
